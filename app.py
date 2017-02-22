@@ -3,9 +3,8 @@
 #----------------------------------------------------------------------------#
 
 from flask import Flask, render_template, request
-# from flask.ext.sqlalchemy import SQLAlchemy
-import logging
 import requests
+import logging
 from logging import Formatter, FileHandler
 from forms import *
 import os
@@ -42,11 +41,13 @@ def login_required(test):
 #----------------------------------------------------------------------------#
 
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def home():
-    r = requests.get("http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=json&lang=en")
-    print(r);
-    return render_template('pages/home.html')
+    data = {'method':'getQuote','key':'4576','format':'json','lang':'en'}
+    response = requests.get("http://api.forismatic.com/api/1.0/",params = data)
+    quotesJson = response.json()
+    print(response.text);
+    return render_template('pages/home.html',quotes = quotesJson)
 
 
 @app.route('/about')

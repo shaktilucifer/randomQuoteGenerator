@@ -3,8 +3,8 @@
 {% block content %}
 
 <div class="page-header">
-  <h1>Random Quote Generator</h1>
+  <h1>{{ quotes.quoteAuthor }}</h1>
 </div>
-<p class="lead">Random Quotes Here!</p>
+<p class="lead"> {{ quotes.quoteText }} </p>
 
 {% endblock %}
