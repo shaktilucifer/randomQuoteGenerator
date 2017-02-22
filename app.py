@@ -5,6 +5,7 @@
 from flask import Flask, render_template, request
 # from flask.ext.sqlalchemy import SQLAlchemy
 import logging
+import requests
 from logging import Formatter, FileHandler
 from forms import *
 import os
@@ -43,6 +44,8 @@ def login_required(test):
 
 @app.route('/')
 def home():
+    r = requests.get("http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=json&lang=en")
+    print(r);
     return render_template('pages/home.html')
 
 
