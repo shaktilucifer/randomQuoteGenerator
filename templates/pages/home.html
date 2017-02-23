@@ -2,9 +2,38 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 
-<div class="page-header">
-  <h1>{{ quotes.quoteAuthor }}</h1>
-</div>
-<p class="lead"> {{ quotes.quoteText }} </p>
+<div ng-app="RandomQuoteGenerator">
 
+    <div ng-controller="QuotesController" class="page-header">
+        <h1>{{ quotes.quoteAuthor }}</h1>
+    <p class="lead"> {{ quotes.quoteText }} </p>
+    <button ng-click="getNewQuote()" class="btn btn-primary">New Quote</button>
+    </div>
+
+</div>
+
+<script>
+
+var randomQuoteApp = angular.module('RandomQuoteGenerator', []);
+/**
+* Override angular delimiter notation  to use alongside jinja temp
+* Notation - {@ ang_var @}
+**/
+randomQuoteApp.config(['$interpolateProvider', function($interpolateProvider) {
+    $interpolateProvider.startSymbol('{@');
+    $interpolateProvider.endSymbol('@}');
+}]);
+
+
+randomQuoteApp.controller('QuotesController', ['$scope', '$log', function($scope,$log) {
+    $scope.getNewQuote = function() {
+      console.log("Get New quotes");
+      //get random new quote from controller
+    }
+}]);
+
+</script>
+
+
+<!-- </div> -->
 {% endblock %}
