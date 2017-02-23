@@ -1,42 +1,39 @@
-{% extends 'layouts/main.html' %}
-{% block title %}Home{% endblock %}
-{% block content %}
+{% extends 'layouts/main.html' %} {% block title %}Home{% endblock %} {% block content %}
 
 <div ng-app="RandomQuoteGenerator">
 
     <div ng-controller="QuotesController" class="page-header">
-        <h1>{{ quotes.quoteAuthor }}</h1>
-    <p class="lead"> {{ quotes.quoteText }} </p>
-    <button ng-click="getNewQuote()" class="btn btn-primary">New Quote</button>
+        <h1 ng-init='quotes.quoteAuthor = "{{ quotes.quoteAuthor}}"'>{@ quotes.quoteAuthor @}</h1>
+        <p class="lead" ng-init='quotes.quoteText = "{{ quotes.quoteText}}"'> {@ quotes.quoteText @} </p>
+        <button ng-click="getNewQuote()" class="btn btn-primary">New Quote</button>
     </div>
 
 </div>
 
 <script>
+    var randomQuoteApp = angular.module('RandomQuoteGenerator', []);
+    /**
+     * Override angular delimiter notation  to use alongside jinja temp
+     * Notation - {@ ang_var @}
+     **/
+    randomQuoteApp.config(['$interpolateProvider', function($interpolateProvider) {
+        $interpolateProvider.startSymbol('{@');
+        $interpolateProvider.endSymbol('@}');
+    }]);
 
-var randomQuoteApp = angular.module('RandomQuoteGenerator', []);
-/**
-* Override angular delimiter notation  to use alongside jinja temp
-* Notation - {@ ang_var @}
-**/
-randomQuoteApp.config(['$interpolateProvider', function($interpolateProvider) {
-    $interpolateProvider.startSymbol('{@');
-    $interpolateProvider.endSymbol('@}');
-}]);
 
-
-randomQuoteApp.controller('QuotesController', ['$http','$scope', '$log', function($http,$scope,$log) {
-    $scope.getNewQuote = function() {
-      $http.post('/newQuote').
-           success(function(results) {
-             $log.log(results);
-           }).
-           error(function(error) {
-             $log.log(error);
-           });      //get random new quote from controller
-    }
-}]);
-
+    randomQuoteApp.controller('QuotesController', ['$http', '$scope', '$log', function($http, $scope, $log) {
+        $scope.getNewQuote = function() {
+            $http.post('/newQuote').
+            success(function(results) {
+                console.log(results);
+                $scope.quotes = results;
+            }).
+            error(function(error) {
+                $log.log(error);
+            }); //get random new quote from controller
+        }
+    }]);
 </script>
 
 
