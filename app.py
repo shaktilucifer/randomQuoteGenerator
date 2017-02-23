@@ -2,7 +2,7 @@
 # Imports
 #----------------------------------------------------------------------------#
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import requests
 import logging
 from logging import Formatter, FileHandler
@@ -43,12 +43,18 @@ def login_required(test):
 
 @app.route('/',methods=['GET','POST'])
 def home():
-    data = {'method':'getQuote','key':'4576','format':'json','lang':'en'}
-    response = requests.get("http://api.forismatic.com/api/1.0/",params = data)
-    quotesJson = response.json()
-    print(response.text);
+    quotesJson = getRandomQuoteFromApi()
     return render_template('pages/home.html',quotes = quotesJson)
 
+@app.route('/newQuote', methods=['POST'])
+def get_counts():
+    # Use jsonify to set content type as application/json
+    return jsonify(getRandomQuoteFromApi())
+
+def getRandomQuoteFromApi():
+    data = {'method':'getQuote','key':'4576','format':'json','lang':'en'}
+    response = requests.get("http://api.forismatic.com/api/1.0/",params = data)
+    return response.json()
 
 @app.route('/about')
 def about():

@@ -25,10 +25,15 @@ randomQuoteApp.config(['$interpolateProvider', function($interpolateProvider) {
 }]);
 
 
-randomQuoteApp.controller('QuotesController', ['$scope', '$log', function($scope,$log) {
+randomQuoteApp.controller('QuotesController', ['$http','$scope', '$log', function($http,$scope,$log) {
     $scope.getNewQuote = function() {
-      console.log("Get New quotes");
-      //get random new quote from controller
+      $http.post('/newQuote').
+           success(function(results) {
+             $log.log(results);
+           }).
+           error(function(error) {
+             $log.log(error);
+           });      //get random new quote from controller
     }
 }]);
 
