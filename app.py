@@ -5,6 +5,7 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 import logging
+import random
 from logging import Formatter, FileHandler
 from forms import *
 import os
@@ -52,9 +53,15 @@ def get_counts():
     return jsonify(getRandomQuoteFromApi())
 
 def getRandomQuoteFromApi():
-    data = {'method':'getQuote','key':'4576','format':'json','lang':'en'}
+    rand = random.sample(range(1,99999), 1)
+    data = {'method':'getQuote','key':rand[0],'format':'json','lang':'en'}
+    print data
     response = requests.get("http://api.forismatic.com/api/1.0/",params = data)
-    return response.json()
+    try:
+        jsonToRet = response.json()
+    except:
+        jsonToRet = getRandomQuoteFromApi()
+    return jsonToRet
 
 @app.route('/about')
 def about():
