@@ -5,7 +5,7 @@
     <div ng-controller="QuotesController" class="page-header">
         <h1 ng-init='quotes.quoteAuthor = "{{ quotes.quoteAuthor}}"'>{@ quotes.quoteAuthor @}</h1>
         <p class="lead" ng-init='quotes.quoteText = "{{ quotes.quoteText}}"'> {@ quotes.quoteText @} </p>
-        <button ng-click="getNewQuote()" class="btn btn-primary btn-sm">New Quote</button>
+        <button ng-click="getNewQuote()" class="btn btn-flat">New Quote</button>
         <a href="https://twitter.com/share" class="twitter-share-button" data-text="{@ quotes.quoteText @}-{@ quotes.quoteAuthor @}" data-hashtags="randomQuotes" data-show-count="false">Tweet</a>
         <script type="text/javascript" src="static/js/main.js"></script>
     </div>
