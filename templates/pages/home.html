@@ -6,12 +6,12 @@
             <div class="card-image">
                 <!-- <img src="images/sample-1.jpg"> -->
                 <span class="card-title" ng-init='quotes.quoteAuthor = "{{ quotes.quoteAuthor}}"'>{@ quotes.quoteAuthor @}</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light blue" ng-click="getNewQuote()"><i class="fa fa-refresh"></i></a>
+                <a class="btn-floating halfway-fab waves-effect waves-light blue hoverable" ng-click="getNewQuote()"><i class="fa fa-refresh"></i></a>
 
             </div>
             <div class="card-content">
                 <span class="card-title" ng-init='quotes.quoteAuthor = "{{ quotes.quoteAuthor}}"'>{@ quotes.quoteAuthor @}</span>
-                <p class="lead" ng-init='quotes.quoteText = "{{ quotes.quoteText}}"'> {@ quotes.quoteText @} </p>
+                <p class="lead flow-text" ng-init='quotes.quoteText = "{{ quotes.quoteText}}"'> {@ quotes.quoteText @} </p>
                 </br>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-text="{@ quotes.quoteText @}-{@ quotes.quoteAuthor @}" data-hashtags="randomQuotes" data-show-count="false">Tweet</a>
             </div>

@@ -14,7 +14,6 @@ randomQuoteApp.controller('QuotesController', ['$http', '$scope', '$log', functi
         $http.post('/newQuote').
         success(function(results) {
           //get random new quote from controller
-            console.log(results);
             $scope.quotes = results;
         }).
         error(function(error) {
