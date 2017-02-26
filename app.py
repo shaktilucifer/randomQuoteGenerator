@@ -45,6 +45,8 @@ def login_required(test):
 @app.route('/',methods=['GET','POST'])
 def home():
     quotesJson = getRandomQuoteFromApi()
+    if not quotesJson['quoteAuthor']:
+        quotesJson['quoteAuthor'] = "Unknown"
     return render_template('pages/home.html',quotes = quotesJson)
 
 @app.route('/newQuote', methods=['POST'])
