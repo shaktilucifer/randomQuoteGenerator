@@ -45,8 +45,7 @@ def login_required(test):
 @app.route('/',methods=['GET','POST'])
 def home():
     quotesJson = getRandomQuoteFromApi()
-    if not quotesJson['quoteAuthor']:
-        quotesJson['quoteAuthor'] = "Unknown"
+
     return render_template('pages/home.html',quotes = quotesJson)
 
 @app.route('/newQuote', methods=['POST'])
@@ -55,15 +54,21 @@ def get_counts():
     return jsonify(getRandomQuoteFromApi())
 
 def getRandomQuoteFromApi():
+    # Randomn Number for the api key which takes any 5 digit number
     rand = random.sample(range(1,99999), 1)
-    data = {'method':'getQuote','key':rand[0],'format':'json','lang':'en'}
-    print data
-    response = requests.get("http://api.forismatic.com/api/1.0/",params = data)
+    # Parameters to be sent to the api
+    params = {'method':'getQuote','key':rand[0],'format':'json','lang':'en'}
+    # Requests library to get the quote @json format
+    response = requests.get("http://api.forismatic.com/api/1.0/",params = params)
     try:
-        jsonToRet = response.json()
+        quotesJson = response.json()
     except:
-        jsonToRet = getRandomQuoteFromApi()
-    return jsonToRet
+        quotesJson = getRandomQuoteFromApi()
+    # If author is empty replace author with "Unknown"
+    if not quotesJson['quoteAuthor']:
+        quotesJson['quoteAuthor'] = "Unknown"
+
+    return quotesJson
 
 @app.route('/about')
 def about():
