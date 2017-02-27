@@ -1,95 +1,101 @@
 <!doctype html>
+
 <head>
-<meta charset="utf-8">
-<title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
 
-<!-- meta -->
-<meta name="description" content="">
-<meta name="author" content="">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<!-- /meta -->
+    <!-- meta -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- /meta -->
 
-<!-- styles -->
-<link type="text/css" rel="stylesheet" href="/static/css/font-awesome-4.1.0.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-<link type="text/css" rel="stylesheet" href="/static/css/layout.main.css" />
-<link type="text/css" rel="stylesheet" href="/static/css/main.css" />
-<link type="text/css" rel="stylesheet" href="/static/css/main.responsive.css" />
-<link type="text/css" rel="stylesheet" href="/static/css/main.quickfix.css" />
-<!-- /styles -->
+    <!-- styles -->
+    <link type="text/css" rel="stylesheet" href="/static/css/font-awesome-4.1.0.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/layout.main.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/main.responsive.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/main.quickfix.css" />
+    <!-- /styles -->
 
-<!-- favicons -->
-<link rel="shortcut icon" href="/static/ico/favicon.png">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="/static/ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="/static/ico/favicon.png">
-<!-- /favicons -->
+    <!-- favicons -->
+    <link rel="shortcut icon" href="/static/ico/faviconQuote.png">
+    <!-- /favicons -->
 
-<!-- scripts -->
+    <!-- scripts -->
 
-<!-- Compiled and minified JavaScript -->
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-<script src="/static/js/libs/modernizr-2.8.2.min.js"></script>
-<!--[if lt IE 9]><script src="/static/js/libs/respond-1.4.2.min.js"></script><![endif]-->
-<!-- /scripts -->
+    <!-- Compiled and minified JavaScript -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="/static/js/libs/modernizr-2.8.2.min.js"></script>
+    <!--[if lt IE 9]><script src="/static/js/libs/respond-1.4.2.min.js"></script><![endif]-->
+    <!-- /scripts -->
 
 </head>
+
 <body>
 
-  <!-- Wrap all page content here -->
-  <div id="wrap">
+    <!-- Wrap all page content here -->
+    <div id="wrap">
 
-    <!-- Fixed navbar -->
-    <nav>
-    <div class="nav-wrapper blue lighten-2">
-      <a href="#!" class="brand-logo center">Random Quote Genrator</a>
+        <!-- Fixed navbar -->
+        <nav>
+            <div class="nav-wrapper blue lighten-2">
+                <a href="#!" class="brand-logo center">Random Quote Genrator</a>
+            </div>
+        </nav>
+
+        <!-- Begin page content -->
+        <main id="content" role="main" class="container">
+
+
+            {% block content %}{% endblock %}
+
+        </main>
+
     </div>
-  </nav>
 
-    <!-- Begin page content -->
-    <main id="content" role="main" class="container">
-
-
-      {% block content %}{% endblock %}
-
-    </main>
-
-  </div>
-
-  <div id="footer">
-    <div class="container">
-      <p>Shakti S &copy; All Rights Reserved.</p>
-      {% block footer %}{% endblock %}
+    <div id="footer">
+        <div class="container">
+            <p>Shakti S &copy; All Rights Reserved.</p>
+            {% block footer %}{% endblock %}
+        </div>
     </div>
-  </div>
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script type="text/javascript" src="/static/js/libs/jquery-1.11.1.min.js"><\/script>')</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script type="text/javascript" src="/static/js/libs/jquery-1.11.1.min.js"><\/script>')
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
-  <script type="text/javascript" src="/static/js/script.js" defer></script>
+    <script type="text/javascript" src="/static/js/script.js" defer></script>
 
-  <!-- Google Analytics - Change UA-XXXXX-X to be your site's ID -->
-  <script>
-  window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
-  Modernizr.load({
-    load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
-  });
-  </script>
-  <style>
-  .nav-wrapper{
-    background-color: #2196f3!important;
-  }
-  #content{
-      margin-top:8%;
-  }
-  .card-title{
-    font-weight: bold!important;
-    text-align: center;
-    color: #ffa726;
-  }
-  </style>
+    <!-- Google Analytics - Change UA-XXXXX-X to be your site's ID -->
+    <script>
+        window._gaq = [
+            ['_setAccount', 'UAXXXXXXXX1'],
+            ['_trackPageview'],
+            ['_trackPageLoadTime']
+        ];
+        Modernizr.load({
+            load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+        });
+    </script>
+    <style>
+        .nav-wrapper {
+            background-color: #2196f3!important;
+        }
+
+        #content {
+            margin-top: 8%;
+        }
+
+        .card-title {
+            font-weight: bold!important;
+            text-align: center;
+            color: #ffa726;
+        }
+    </style>
 
 </body>
+
 </html>
