@@ -1,4 +1,4 @@
-# randomQuoteGenerator
+# Random Quote Gen WebApp
 A random quote generating web app built using python Flask, Angular js 1.5 ,Materialize.css 
 
 <h1>Getting Started</h1>
