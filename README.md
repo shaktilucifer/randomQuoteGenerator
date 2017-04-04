@@ -20,3 +20,9 @@ A random quote generating web app built using python Flask, Angular js 1.5 ,Mate
 
 ```
  Open the app at  http://127.0.0.1:5000/
+
+#Random Quote 
+![Alt text](/images/randomquotegen.png?raw=true "Random Quote Gen Main")
+
+#Tweet
+![Alt text](/images/tweetquote.png?raw=true "Random Quote Tweet")
