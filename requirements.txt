@@ -16,5 +16,5 @@ pyparsing==2.1.10
 requests==2.13.0
 six==1.10.0
 SQLAlchemy==0.9.3
-Werkzeug==0.9.4
+Werkzeug==0.15.3
 WTForms==1.0.5
